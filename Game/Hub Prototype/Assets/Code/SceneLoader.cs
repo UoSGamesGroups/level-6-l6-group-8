@@ -29,4 +29,15 @@ public class SceneLoader : MonoBehaviour
 		}
 
 	}
+
+	void OnTriggerStay(Collider StallBoundry)
+	{
+		Debug.Log ("Trigger");
+		if (Input.GetButtonDown ("E")) 
+		{
+			Debug.Log ("E Pressed");
+			SceneManager.LoadScene ("Test Scene", LoadSceneMode.Single);
+		}
+	}
+
 }
