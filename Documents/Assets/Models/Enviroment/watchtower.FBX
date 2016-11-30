@@ -10,11 +10,11 @@ FBXHeaderExtension:  {
 		Version: 1000
 		Year: 2016
 		Month: 11
-		Day: 29
-		Hour: 16
-		Minute: 11
-		Second: 39
-		Millisecond: 916
+		Day: 30
+		Hour: 9
+		Minute: 24
+		Second: 21
+		Millisecond: 952
 	}
 	Creator: "FBX SDK/FBX Plugins version 2015.0"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -30,29 +30,29 @@ FBXHeaderExtension:  {
 			Comment: ""
 		}
 		Properties70:  {
-			P: "DocumentUrl", "KString", "Url", "", "C:\Users\Dino-PC\Desktop\watchtower.FBX"
-			P: "SrcDocumentUrl", "KString", "Url", "", "C:\Users\Dino-PC\Desktop\watchtower.FBX"
+			P: "DocumentUrl", "KString", "Url", "", "C:\Users\Dino-PC\Desktop\testbla.FBX"
+			P: "SrcDocumentUrl", "KString", "Url", "", "C:\Users\Dino-PC\Desktop\testbla.FBX"
 			P: "Original", "Compound", "", ""
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2014"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "29/11/2016 16:11:39.912"
-			P: "Original|FileName", "KString", "", "", "C:\Users\Dino-PC\Desktop\watchtower.FBX"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "30/11/2016 09:24:21.948"
+			P: "Original|FileName", "KString", "", "", "C:\Users\Dino-PC\Desktop\testbla.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2014"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "29/11/2016 16:11:39.912"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "30/11/2016 09:24:21.948"
 		}
 	}
 }
 GlobalSettings:  {
 	Version: 1000
 	Properties70:  {
-		P: "UpAxis", "int", "Integer", "",1
+		P: "UpAxis", "int", "Integer", "",2
 		P: "UpAxisSign", "int", "Integer", "",1
-		P: "FrontAxis", "int", "Integer", "",2
-		P: "FrontAxisSign", "int", "Integer", "",1
+		P: "FrontAxis", "int", "Integer", "",1
+		P: "FrontAxisSign", "int", "Integer", "",-1
 		P: "CoordAxis", "int", "Integer", "",0
 		P: "CoordAxisSign", "int", "Integer", "",1
 		P: "OriginalUpAxis", "int", "Integer", "",2
@@ -77,7 +77,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 1857582912, "", "Scene" {
+	Document: 1796723312, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -255,7 +255,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 1232814864, "Geometry::", "Mesh" {
+	Geometry: 1801399152, "Geometry::", "Mesh" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0.6,0.894117647058823,0.72156862745098
 		}
@@ -349,21 +349,19 @@ Objects:  {
 			}
 		}
 	}
-	Model: 1857081024, "Model::Tower", "Mesh" {
+	Model: 1675892336, "Model::Tower", "Mesh" {
 		Version: 232
 		Properties70:  {
-			P: "PreRotation", "Vector3D", "Vector", "",-90,-0,0
-			P: "RotationActive", "bool", "", "",1
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Translation", "Lcl Translation", "", "A",20.0891456604004,0,1.71832275390625
+			P: "Lcl Translation", "Lcl Translation", "", "A",20.0891456604004,-1.71832275390625,0
 			P: "MaxHandle", "int", "Integer", "UH",13
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 1724596080, "Material::01 - Default", "" {
+	Material: 1801229072, "Material::01 - Default", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -385,7 +383,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 1724594640, "Material::02 - Default", "" {
+	Material: 1801230032, "Material::02 - Default", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -407,7 +405,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 1724595120, "Material::03 - Default", "" {
+	Material: 1801230992, "Material::03 - Default", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -437,20 +435,20 @@ Objects:  {
 Connections:  {
 	
 	;Model::Tower, Model::RootNode
-	C: "OO",1857081024,0
+	C: "OO",1675892336,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",1863363296,1696086064
+	C: "OO",1665150656,1677489328
 	
 	;Geometry::, Model::Tower
-	C: "OO",1232814864,1857081024
+	C: "OO",1801399152,1675892336
 	
 	;Material::01 - Default, Model::Tower
-	C: "OO",1724596080,1857081024
+	C: "OO",1801229072,1675892336
 	
 	;Material::02 - Default, Model::Tower
-	C: "OO",1724594640,1857081024
+	C: "OO",1801230032,1675892336
 	
 	;Material::03 - Default, Model::Tower
-	C: "OO",1724595120,1857081024
+	C: "OO",1801230992,1675892336
 }
