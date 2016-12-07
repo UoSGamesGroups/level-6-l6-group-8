@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
@@ -13,11 +14,15 @@ public class Waypoint : MonoBehaviour
 	GameObject WaypointOne; 
 	GameObject WaypointTwo;
 	GameObject WaypointThree;
+	GameObject WaypointFour;
+	GameObject WaypointFive;
+
+	public float speed = 10000.0f;
 
 	// Use this for initialization
 	void Start () 
 	{
-		canMove = false;
+		canMove = true;
 
 		counters = GameObject.FindGameObjectsWithTag ("Waypoint");
 		for (int i = 0; i < counters.Length; i++) {
@@ -26,15 +31,18 @@ public class Waypoint : MonoBehaviour
 
 	//	WaypointOne = GameObject.Find ("Counters/Counter/WaypointAngloHut");
 		Character = GameObject.Find ("Bones");
-		WaypointOne = GameObject.Find ("WaypointAngloHut");
-		WaypointTwo = GameObject.Find ("WaypointAngloCastle");
+		WaypointOne = GameObject.Find ("Waypoint1");
+		WaypointTwo = GameObject.Find ("Waypoint2");
+		WaypointThree = GameObject.Find ("Waypoint3");
+		WaypointFour = GameObject.Find ("Waypoint4");
+		WaypointFive = GameObject.Find ("Waypoint5");
 
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		
+		//transform.position = Vector3.MoveTowards (transform.position, WaypointTwo.transform.position, Time.deltaTime * speed);
 	}
 
 
@@ -45,6 +53,7 @@ public class Waypoint : MonoBehaviour
 		case "Right":
 
 			Debug.Log ("moveRight");
+			transform.position = Vector3.MoveTowards (transform.position, WaypointTwo.transform.position, Time.deltaTime * speed);
 			break;
 		}
 	}
@@ -58,14 +67,13 @@ public class Waypoint : MonoBehaviour
 
 
 			Debug.Log ("moveLeft");
+			transform.position = Vector3.MoveTowards (transform.position, WaypointOne.transform.position, Time.deltaTime * speed);
 			break;
 		}
 	}
 
 
-
-	/*
-	void CastMovement ()
+	/*void CastMovement ()
 	{
 		{
 			//Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
