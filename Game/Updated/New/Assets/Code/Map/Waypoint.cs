@@ -8,6 +8,7 @@ public class Waypoint : MonoBehaviour
 {
 	public bool canMove;
 
+
 	public GameObject[] counters;
 
 	GameObject Character;
@@ -22,7 +23,7 @@ public class Waypoint : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		canMove = true;
+		canMove = false;
 
 		counters = GameObject.FindGameObjectsWithTag ("Waypoint");
 		for (int i = 0; i < counters.Length; i++) {
@@ -53,7 +54,9 @@ public class Waypoint : MonoBehaviour
 		case "Right":
 
 			Debug.Log ("moveRight");
-			transform.position = Vector3.MoveTowards (transform.position, WaypointTwo.transform.position, Time.deltaTime * speed);
+			if (canMove == true) {
+				transform.position = Vector3.MoveTowards (transform.position, WaypointTwo.transform.position, Time.deltaTime * speed);
+			}
 			break;
 		}
 	}
@@ -64,11 +67,22 @@ public class Waypoint : MonoBehaviour
 		{
 		case "Left":
 
-
-
+			//canMove = true;
 			Debug.Log ("moveLeft");
-			transform.position = Vector3.MoveTowards (transform.position, WaypointOne.transform.position, Time.deltaTime * speed);
+			//transform.position = Vector3.MoveTowards (transform.position, WaypointOne.transform.position, Time.deltaTime * speed);
 			break;
+		}
+	}
+
+
+
+
+	void OnTriggerEnter (Collider col)
+	{			
+			if (col.gameObject.name == "Waypoint1") {
+			canMove = true;
+				Debug.Log ("Collider Hit");
+			}
 		}
 	}
 
@@ -96,4 +110,3 @@ public class Waypoint : MonoBehaviour
 	}
 
 */
-}
