@@ -7,6 +7,9 @@ using UnityEngine.EventSystems;
 public class Waypoint : MonoBehaviour 
 {
 	public bool canMove;
+	public bool waypoint1;
+	public bool waypoint2;
+	public bool waypoint3;
 
 
 	public GameObject[] counters;
@@ -18,12 +21,15 @@ public class Waypoint : MonoBehaviour
 	GameObject WaypointFour;
 	GameObject WaypointFive;
 
+	public GameObject PanelLevel1;
+
 	public float speed = 10000.0f;
 
 	// Use this for initialization
 	void Start () 
 	{
 		canMove = false;
+		waypoint2 = false;
 
 		counters = GameObject.FindGameObjectsWithTag ("Waypoint");
 		for (int i = 0; i < counters.Length; i++) {
@@ -43,7 +49,7 @@ public class Waypoint : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		//transform.position = Vector3.MoveTowards (transform.position, WaypointTwo.transform.position, Time.deltaTime * speed);
+
 	}
 
 
@@ -54,9 +60,22 @@ public class Waypoint : MonoBehaviour
 		case "Right":
 
 			Debug.Log ("moveRight");
-			if (canMove == true) {
+			if (canMove == true && waypoint1 == true) {
 				transform.position = Vector3.MoveTowards (transform.position, WaypointTwo.transform.position, Time.deltaTime * speed);
+				waypoint1 = false;
 			}
+
+			if (canMove == true && waypoint2 == true) {
+				transform.position = Vector3.MoveTowards (transform.position, WaypointThree.transform.position, Time.deltaTime * speed);
+				waypoint2 = false;
+			}
+
+			if (canMove == true && waypoint3 == true) {
+				transform.position = Vector3.MoveTowards (transform.position, WaypointFour.transform.position, Time.deltaTime * speed);
+				waypoint3 = false;
+			}
+
+
 			break;
 		}
 	}
@@ -69,22 +88,54 @@ public class Waypoint : MonoBehaviour
 
 			//canMove = true;
 			Debug.Log ("moveLeft");
-			//transform.position = Vector3.MoveTowards (transform.position, WaypointOne.transform.position, Time.deltaTime * speed);
+			if (canMove == true && waypoint3 == true) {
+				transform.position = Vector3.MoveTowards (transform.position, WaypointTwo.transform.position, Time.deltaTime * speed);
+				waypoint3 = false;
+			}
+
+			if (canMove == true && waypoint2 == true) {
+				transform.position = Vector3.MoveTowards (transform.position, WaypointOne.transform.position, Time.deltaTime * speed);
+				waypoint2 = false;
+			}
 			break;
 		}
 	}
 
-
-
+	public void Select (string Select)
+	{
+		switch (Select) 
+		{
+		case "Select":
+			Debug.Log ("selectSelected");
+			if (waypoint1 == true) {
+				PanelLevel1.SetActive (true);
+			}
+			break;
+		}
+	}
 
 	void OnTriggerEnter (Collider col)
 	{			
 			if (col.gameObject.name == "Waypoint1") {
 			canMove = true;
+			waypoint1 = true;
 				Debug.Log ("Collider Hit");
 			}
+
+		if (col.gameObject.name == "Waypoint2"){
+			waypoint2 = true;
+			canMove = true;
+			Debug.Log ("Collider Hit");
 		}
+
+		if (col.gameObject.name == "Waypoint3") {
+			waypoint3 = true;
+			canMove = true;
+			Debug.Log ("Collider Hit");
+		}
+
 	}
+}
 
 
 	/*void CastMovement ()
