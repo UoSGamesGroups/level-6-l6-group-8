@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MoveCharacter : MonoBehaviour {
+public class LoadScene : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -10,6 +10,11 @@ public class MoveCharacter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+	
+	}
+
+	public void ChangeToScene(string sceneName)
+	{
+		Application.LoadLevel("Puzzle Scene");
 	}
 }
