@@ -15,7 +15,7 @@ public class LevelLoad2 : MonoBehaviour {
 	{
 		if (Input.GetButtonDown ("R")) 
 		{
-			SceneManager.LoadScene ("Test Scene", LoadSceneMode.Single);
+			SceneManager.LoadScene ("Words", LoadSceneMode.Single);
 		}
 	}
 }
