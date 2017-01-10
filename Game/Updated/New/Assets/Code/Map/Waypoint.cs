@@ -11,7 +11,6 @@ public class Waypoint : MonoBehaviour
 	public bool waypoint2;
 	public bool waypoint3;
 
-
 	public GameObject[] counters;
 
 	GameObject Character;
@@ -44,6 +43,8 @@ public class Waypoint : MonoBehaviour
 		WaypointFour = GameObject.Find ("Waypoint4");
 		WaypointFive = GameObject.Find ("Waypoint5");
 
+		GetComponent<Animator>().enabled = false;
+
 	}
 	
 	// Update is called once per frame
@@ -63,11 +64,15 @@ public class Waypoint : MonoBehaviour
 			if (canMove == true && waypoint1 == true) {
 				transform.position = Vector3.MoveTowards (transform.position, WaypointTwo.transform.position, Time.deltaTime * speed);
 				waypoint1 = false;
+				GetComponent<Animator>().enabled = true;
+
+				//StartCoroutine (Boneswp1Coroutine());
 			}
 
 			if (canMove == true && waypoint2 == true) {
 				transform.position = Vector3.MoveTowards (transform.position, WaypointThree.transform.position, Time.deltaTime * speed);
 				waypoint2 = false;
+				GetComponent<Animator>().enabled = enabled;
 			}
 
 			if (canMove == true && waypoint3 == true) {
@@ -79,6 +84,17 @@ public class Waypoint : MonoBehaviour
 			break;
 		}
 	}
+
+	/*private IEnumerator Boneswp1Coroutine()
+	{
+		Animator animator = GetComponent<Animator> ();
+
+		if (animator) {
+			animator.Play (bonesWP1.name);
+
+			yield return new WaitForSeconds (bonesWP1.length);
+		}
+	}*/
 
 	public void Left (string Left)
 	{
@@ -126,12 +142,14 @@ public class Waypoint : MonoBehaviour
 			waypoint2 = true;
 			canMove = true;
 			Debug.Log ("Collider Hit");
+			GetComponent<Animator>().enabled = false;
 		}
 
 		if (col.gameObject.name == "Waypoint3") {
 			waypoint3 = true;
 			canMove = true;
 			Debug.Log ("Collider Hit");
+			GetComponent<Animator>().enabled = false;
 		}
 
 	}
