@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/PuzzleImport/Puzzle Scene.unity
-  isLoaded: 1
-  isActive: 1
