@@ -10,6 +10,8 @@ public class Waypoint : MonoBehaviour
 	public bool waypoint1;
 	public bool waypoint2;
 	public bool waypoint3;
+	public bool waypoint4;
+	public bool waypoint5;
 
 
 	public GameObject[] counters;
@@ -75,6 +77,16 @@ public class Waypoint : MonoBehaviour
 				waypoint3 = false;
 			}
 
+			if (canMove == true && waypoint4 == true) {
+				transform.position = Vector3.MoveTowards (transform.position, WaypointFour.transform.position, Time.deltaTime * speed);
+				waypoint4 = false;
+			}
+
+			if (canMove == true && waypoint5 == true) {
+				transform.position = Vector3.MoveTowards (transform.position, WaypointFour.transform.position, Time.deltaTime * speed);
+				waypoint5 = false;
+			}
+
 
 			break;
 		}
@@ -97,6 +109,19 @@ public class Waypoint : MonoBehaviour
 				transform.position = Vector3.MoveTowards (transform.position, WaypointOne.transform.position, Time.deltaTime * speed);
 				waypoint2 = false;
 			}
+
+			if (canMove == true && waypoint4 == true) {
+				transform.position = Vector3.MoveTowards (transform.position, WaypointOne.transform.position, Time.deltaTime * speed);
+				waypoint4 = false;
+
+			}
+
+			if (canMove == true && waypoint5 == true) {
+				transform.position = Vector3.MoveTowards (transform.position, WaypointOne.transform.position, Time.deltaTime * speed);
+				waypoint5 = false;
+
+			}
+
 			break;
 		}
 	}
@@ -130,6 +155,18 @@ public class Waypoint : MonoBehaviour
 
 		if (col.gameObject.name == "Waypoint3") {
 			waypoint3 = true;
+			canMove = true;
+			Debug.Log ("Collider Hit");
+		}
+
+		if (col.gameObject.name == "Waypoint4") {
+			waypoint4 = true;
+			canMove = true;
+			Debug.Log ("Collider Hit");
+		}
+
+		if (col.gameObject.name == "Waypoint5") {
+			waypoint5 = true;
 			canMove = true;
 			Debug.Log ("Collider Hit");
 		}

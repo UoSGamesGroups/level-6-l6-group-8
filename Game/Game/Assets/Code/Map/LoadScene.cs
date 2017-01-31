@@ -9,12 +9,16 @@ public class LoadScene : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
+			if (Input.GetKeyDown(KeyCode.R))
+				Application.LoadLevel(0);
+
 	}
 
 	public void ChangeToScene(string sceneName)
 	{
 		Application.LoadLevel("Puzzle Scene");
 	}
+		
 }
