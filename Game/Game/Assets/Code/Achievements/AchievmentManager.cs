@@ -22,7 +22,7 @@ public class AchievmentManager : MonoBehaviour
 	void Start () 
 	{
 		activeButton = GameObject.Find ("All_Btn").GetComponent<AchievementButton> ();
-		CreateAchievment ("General", "Test", "Test Description", 10,0);
+		CreateAchievment ("General", "Artifact - Shield", "Complete the WatchTower", 10,0);
 	
 
 		CreateAchievment ("Saxon", "Artifact - Cauldron", "Complete the Hut", 10,1);
@@ -30,7 +30,7 @@ public class AchievmentManager : MonoBehaviour
 		CreateAchievment ("Saxon", "Artifact - Cross", "Complete the Church", 10,1);
 		CreateAchievment ("Saxon", "Artifact - Plough", "Complete the Farm", 10,1);
 		CreateAchievment ("Saxon", "Artifact - Offa Coin", "Complete the Market", 10,1);
-		CreateAchievment ("Saxon", "Artifact - Shield", "Complete the WatchTower", 10,1);
+		CreateAchievment ("Saxon", "Artifact - Shield ", "Complete the WatchTower", 10,1);
 		CreateAchievment ("Saxon", "Artifact - Norman Shiled", "Complete the BattleField", 10,1);
 		CreateAchievment ("Saxon", "The Saxons", "Complete Saxon World", 20,1);
 
@@ -56,7 +56,7 @@ public class AchievmentManager : MonoBehaviour
 
 		if (Input.GetKeyDown (KeyCode.W)) 
 		{
-			EarnAchievment ("Test");
+			EarnAchievment ("Artifact - Shield");
 		}
 	}
 		
