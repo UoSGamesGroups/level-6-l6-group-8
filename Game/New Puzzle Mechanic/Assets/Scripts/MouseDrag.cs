@@ -1,20 +1,24 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
+
 
 public class MouseDrag : MonoBehaviour {
 
 	public bool dragging = false;
+    public bool moveable = false;
 	private float distance;
 	public string pieceStatus = " ";
 	public float myScale = 0.5f;
 	public float pickupScale = 1.0f;
 	public bool correctPlace;
 
-	// Use this for initialization
-	void Start () {
-	
+    public int scoreValue = 1;
+
+    public GameController gameController;
+
+    // Use this for initialization
+    void Start () {
+              
 	}
 	
 	// Update is called once per frame
@@ -23,7 +27,7 @@ public class MouseDrag : MonoBehaviour {
 		if (dragging) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			Vector2 rayPoint = ray.GetPoint (distance);
-			transform.position = rayPoint;	
+			transform.position = rayPoint;
 		}
 	}
 
@@ -42,14 +46,15 @@ public class MouseDrag : MonoBehaviour {
 		//This is used to place the game object in the correct place.
 		dragging = false;
 		//If the game object is in the correct place it changes the color to green.
-		if (correctPlace == true)
+		if (correctPlace == true && moveable == false)
 		{
 			GetComponent<Renderer> ().material.color = Color.green;
 			//This start the IEnumerator SetPieceColor.
 			StartCoroutine (SetPieceColor ());
-		}
+            gameController.AddScore(scoreValue);
+        }
 
-		if (correctPlace == false)
+		if (correctPlace == false && moveable == true)
 		{
 			//This changes the game object to red if it is in the incorrect place.
 			GetComponent<Renderer>().material.color = Color.red;
@@ -72,18 +77,22 @@ public class MouseDrag : MonoBehaviour {
 		//This looks to see if the game object and the colider are the same name.
 		if (col.gameObject.name == gameObject.name) 
 		{
+            moveable = false;
 			transform.position = col.gameObject.transform.position;
 			pieceStatus = "locked";
 			//This deactivates the box collider so that it cant be moved if in the correct position.
 			GetComponent <BoxCollider2D>().enabled = false;
+            GetComponent<MouseDrag>().enabled = false;
 			Debug.Log ("Hit");
 			correctPlace = true;
-			//transform.localScale = new Vector2 (myScale, myScale);
-		}
+            //transform.localScale = new Vector2 (myScale, myScale);
+        }
+        
 
-		if (col.gameObject.name != gameObject.name) 
+        if (col.gameObject.name != gameObject.name) 
 		{
 			correctPlace = false;
+            moveable = true;
 			//transform.localScale = new Vector2 (myScale, myScale);
 		}
 	}
