@@ -7,10 +7,10 @@ public class MouseDrag : MonoBehaviour {
 	public bool dragging = false;
     public bool moveable = false;
 	private float distance;
-	public string pieceStatus = " ";
 	public float myScale = 0.5f;
 	public float pickupScale = 1.0f;
-	public bool correctPlace;
+	public bool pieceDropped;
+    public bool correctPlace;
 
     public int scoreValue = 1;
 
@@ -37,7 +37,7 @@ public class MouseDrag : MonoBehaviour {
 		distance = Vector2.Distance (transform.position, Camera.main.transform.position);
 		dragging = true;
 		//This changes the game object color when it is picked up.
-		GetComponent<Renderer>().material.color = Color.magenta;
+		//GetComponent<Renderer>().material.color = Color.magenta;
 		//transform.localScale = new Vector2 (pickupScale, pickupScale);
 	}
 
@@ -46,23 +46,32 @@ public class MouseDrag : MonoBehaviour {
 		//This is used to place the game object in the correct place.
 		dragging = false;
 		//If the game object is in the correct place it changes the color to green.
-		if (correctPlace == true && moveable == false)
+		if (pieceDropped == true && moveable == true)
 		{
-			GetComponent<Renderer> ().material.color = Color.green;
+			//GetComponent<Renderer> ().material.color = Color.green;
 			//This start the IEnumerator SetPieceColor.
-			StartCoroutine (SetPieceColor ());
-            gameController.AddScore(scoreValue);
+			//StartCoroutine (SetPieceColor ());
+            StartCoroutine(LockPiece());
         }
 
-		if (correctPlace == false && moveable == true)
+        if (pieceDropped == true && moveable == true && correctPlace == true)
+        {
+            //GetComponent<Renderer> ().material.color = Color.green;
+            //This start the IEnumerator SetPieceColor.
+            //StartCoroutine (SetPieceColor ());
+            gameController.AddScore(scoreValue);
+            StartCoroutine(LockPiece());
+        }
+
+        /*if (correctPlace == false && moveable == true)
 		{
 			//This changes the game object to red if it is in the incorrect place.
 			GetComponent<Renderer>().material.color = Color.red;
-		}
-		//transform.localScale = new Vector2 (myScale, myScale);
-	}
+		}*/
+        //transform.localScale = new Vector2 (myScale, myScale);
+    }
 
-	IEnumerator SetPieceColor()
+	/*IEnumerator SetPieceColor()
 	{
 		//This sets the color to green.
 		GetComponent<Renderer> ().material.color = Color.green;
@@ -70,30 +79,40 @@ public class MouseDrag : MonoBehaviour {
 		yield return new WaitForSeconds (0.5f);
 		//This sets it back to the correct color.
 		GetComponent<Renderer> ().material.color = Color.white;
-	}
+	}*/
 
-	void OnTriggerEnter2D (Collider2D col)
+    IEnumerator LockPiece()
+    {
+        GetComponent <BoxCollider2D>().enabled = false;
+        GetComponent<MouseDrag>().enabled = false;
+        yield return new WaitForSeconds(0.05f);
+        GetComponent<BoxCollider2D>().enabled = true;
+        GetComponent<MouseDrag>().enabled = true;
+    }
+
+    void OnTriggerEnter2D (Collider2D col)
 	{
 		//This looks to see if the game object and the colider are the same name.
 		if (col.gameObject.name == gameObject.name) 
 		{
-            moveable = false;
+            moveable = true;
 			transform.position = col.gameObject.transform.position;
-			pieceStatus = "locked";
 			//This deactivates the box collider so that it cant be moved if in the correct position.
-			GetComponent <BoxCollider2D>().enabled = false;
-            GetComponent<MouseDrag>().enabled = false;
+			//GetComponent <BoxCollider2D>().enabled = false;
+            //GetComponent<MouseDrag>().enabled = false;
 			Debug.Log ("Hit");
-			correctPlace = true;
+			pieceDropped = true;
             //transform.localScale = new Vector2 (myScale, myScale);
+            correctPlace = true;
         }
         
 
         if (col.gameObject.name != gameObject.name) 
 		{
-			correctPlace = false;
+			pieceDropped = true;
             moveable = true;
-			//transform.localScale = new Vector2 (myScale, myScale);
-		}
-	}
+            transform.position = col.gameObject.transform.position;
+            //transform.localScale = new Vector2 (myScale, myScale);
+        }
+    }
 }

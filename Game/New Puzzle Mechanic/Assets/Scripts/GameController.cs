@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class GameController : MonoBehaviour {
 
     public int score;
-    public Text scoreText;
+    
 
     
   
@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour {
 	void Start () {
 
         score = 0;
-        UpdateScore ();	
+       
 	}
 	
 	// Update is called once per frame
@@ -25,11 +25,7 @@ public class GameController : MonoBehaviour {
     public void AddScore (int newScoreValue)
     {
         score += newScoreValue;
-        UpdateScore();
+    
     }
 
-    void UpdateScore ()
-    {
-        scoreText.text = "Correct Pieces: " + score;
-    }
 }
