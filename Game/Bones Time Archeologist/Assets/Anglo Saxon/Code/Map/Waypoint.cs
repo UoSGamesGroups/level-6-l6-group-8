@@ -29,11 +29,14 @@ public class Waypoint : MonoBehaviour
 
 	public GameObject PanelLevel1;
 
+    public Animation animation;
+
 	public float speed = 10000.0f;
 
 	// Use this for initialization
 	void Start () 
 	{
+        animation = GetComponent<Animation>();
 		canMove = false;
 		waypoint2 = false;
 
@@ -70,32 +73,34 @@ public class Waypoint : MonoBehaviour
 			Debug.Log ("moveRight");
 			if (canMove == true && waypoint1 == true) {
 				transform.position = Vector3.MoveTowards (transform.position, WaypointTwo.transform.position, Time.deltaTime * speed);
+                PlayWaypoint1();
 				waypoint1 = false;
 			}
 
 			if (canMove == true && waypoint2 == true) {
 				transform.position = Vector3.MoveTowards (transform.position, WaypointThree.transform.position, Time.deltaTime * speed);
-				waypoint2 = false;
+                PlayWaypoint2();
+                waypoint2 = false;
 			}
 
 			if (canMove == true && waypoint3 == true) {
 				transform.position = Vector3.MoveTowards (transform.position, WaypointFour.transform.position, Time.deltaTime * speed);
-				waypoint3 = false;
+                waypoint3 = false;
 			}
 
 			if (canMove == true && waypoint4 == true) {
 				transform.position = Vector3.MoveTowards (transform.position, WaypointFive.transform.position, Time.deltaTime * speed);
-				waypoint4 = false;
+                waypoint4 = false;
 			}
 
 			if (canMove == true && waypoint5 == true) {
 				transform.position = Vector3.MoveTowards (transform.position, WaypointSix.transform.position, Time.deltaTime * speed);
-				waypoint5 = false;
+                waypoint5 = false;
 			}
 
             if (canMove == true && waypoint6 == true) {
 				transform.position = Vector3.MoveTowards (transform.position, WaypointSeven.transform.position, Time.deltaTime * speed);
-				waypoint6 = false;
+                waypoint6 = false;
 			}
 
 
@@ -209,9 +214,17 @@ public class Waypoint : MonoBehaviour
         }
 
     }
+
+    void PlayWaypoint1()
+    {
+       animation.Play("BonesMovement");
+    }
+
+    void PlayWaypoint2()
+    {
+        animation.Play("Waypoint2To3");
+    }
 }
-
-
 	/*void CastMovement ()
 	{
 		{
