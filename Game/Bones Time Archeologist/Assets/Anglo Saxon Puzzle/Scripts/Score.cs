@@ -45,5 +45,11 @@ public class Score : MonoBehaviour
             wrongPosition = false;
             pieceDropped = true;
         }
+
+        if (col.gameObject.name != gameObject.name)
+        {
+            correctPlace = false;
+            wrongPosition = true;
+        }
     }
 }
