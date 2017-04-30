@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Anglo Saxon Puzzle/Puzzle Scene.unity
+- path: Assets/Anglo Saxon/Scenes/AngloSaxonPuzzle2.unity
   isLoaded: 1
   isActive: 1
