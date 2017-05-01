@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class LevelLoad : MonoBehaviour {
 
 	public bool waypoint1;
+    public bool waypoint2;
 	public GameObject LevelPanel1;
+    public GameObject LevelPanel2;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +22,11 @@ public class LevelLoad : MonoBehaviour {
 			
 			LevelPanel1.SetActive (true);
 		}
+
+        if(waypoint2 == true)
+        {
+            LevelPanel2.SetActive(true);
+        }
 	}
 
 	void OnTriggerEnter (Collider col)
@@ -28,5 +35,11 @@ public class LevelLoad : MonoBehaviour {
 			waypoint1 = true;
 			Debug.Log ("Collider Hit");
 		}
+
+        if (col.gameObject.name == "Waypoint2")
+        {
+            waypoint2 = true;
+            Debug.Log("Collider 2 Hit");
+        }
 	}
 }

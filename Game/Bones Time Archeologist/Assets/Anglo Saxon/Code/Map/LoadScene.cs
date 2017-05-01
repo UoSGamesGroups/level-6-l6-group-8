@@ -20,5 +20,10 @@ public class LoadScene : MonoBehaviour {
 	{
 		Application.LoadLevel("Puzzle Scene");
 	}
+
+    public void ChangeToLevel2 (string sceneName)
+    {
+        Application.LoadLevel("AngloSaxonPuzle2");
+    }
 		
 }
