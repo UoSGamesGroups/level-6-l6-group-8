@@ -26,7 +26,7 @@ public class AchievmentManager : MonoBehaviour
 	
 
 		CreateAchievment ("Saxon", "Artifact - Cauldron", "Complete the Hut", 10,1);
-		CreateAchievment ("Saxon", "Artifact - Crown", "Complete the Castle", 10,1);
+		CreateAchievment ("Saxon", "Artifact - Crown", "Complete the Castle", 10,3);
 		CreateAchievment ("Saxon", "Artifact - Cross", "Complete the Church", 10,1);
 		CreateAchievment ("Saxon", "Artifact - Plough", "Complete the Farm", 10,1);
 		CreateAchievment ("Saxon", "Artifact - Offa Coin", "Complete the Market", 10,1);
@@ -58,7 +58,12 @@ public class AchievmentManager : MonoBehaviour
 		{
 			EarnAchievment ("Artifact - Shield");
 		}
-	}
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            EarnAchievment("Artifact - Crown");
+        }
+    }
 		
 	public void EarnAchievment(string title)
 	{
